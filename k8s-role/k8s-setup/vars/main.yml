@@ -1,0 +1,5 @@
+---
+# vars file for k8s-setup
+pod_network_cidr : 10.244.0.0/16
+k8s_master_ip : 192.168.56.2
+pod_network_manifest_file : https://raw.githubusercontent.com/flannel-io/flannel/master/Documentation/kube-flannel.yml

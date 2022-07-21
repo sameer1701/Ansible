@@ -1,0 +1,12 @@
+---
+# handlers file for k8s-setup
+  - name: restart services
+    service:
+        name: "{{ item }}"
+        state: restarted
+    with_items:
+        - docker
+        - containerd
+
+  - name: docker status
+    service: name=docker state=started

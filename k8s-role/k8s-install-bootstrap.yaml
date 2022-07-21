@@ -1,0 +1,28 @@
+---
+- hosts: all
+  become: true
+  roles:
+    - k8s-setup
+
+- hosts: master
+  remote_user: vagrant
+  become: yes
+  become_method: sudo
+  become_user: root
+  gather_facts: yes
+  connection: ssh
+  vars_files:
+    - k8s-setup/vars/main.yml
+  tasks:
+    - import_tasks: 3-configure-k8s-master.yaml
+
+- hosts: workers
+  remote_user: vagrant
+  become: yes
+  become_method: sudo
+  become_user: root
+  gather_facts: yes
+  connection: ssh
+
+  tasks:
+    - import_tasks : 4-configure-workers.yaml

@@ -1,0 +1,4 @@
+---
+# tasks file for k8s-setup
+- import_tasks: 1-Install-docker.yaml
+- import_tasks: 2-install-k8s-components.yaml
